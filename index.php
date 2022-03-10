@@ -10,7 +10,7 @@
         $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
+        echo "Connected successfully<br>";
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
@@ -19,10 +19,9 @@
 
         // Write to DB
         $user = $_POST['username'];
-        $age = $_POST['age'];
-        $sql = "INSERT INTO `user` (username, age) VALUES ('$user', '$age')";
+        $sql = "INSERT INTO `user` (username, age) VALUES ('$user')";
         $conn->exec($sql);
-        echo "successfully inserted row";
+        echo "<Successfully inserted row<br>";
 
     }
 ?>
@@ -31,8 +30,6 @@
 
 <form action="" method="post">
     <input type="text" name="username" placeholder="username">
-    <!-- <label for="age">Age</label> -->
-    <!-- <input type="number" name="age"> -->
     <input type="submit" value="Add User" name="submit">
 </form>
 
@@ -48,7 +45,6 @@
         $age = $row["age"];
     
         echo "<h2>$username</h2>";
-        // echo "<div>$age</div>";
     }
 
 ?>
